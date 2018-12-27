@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 public class ball extends JLabel implements Runnable {
     private ImageIcon iconball = new ImageIcon("球.png");
     private ImageIcon bombbs = new ImageIcon("1.png");
+    private JLabel jlb = new JLabel();
     private int x,y;
     private int i = 0;
     private boolean show =false;
@@ -30,8 +31,10 @@ public class ball extends JLabel implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if(x>0){
-
+            Thread.yield();
+            if(x==3&&y==3){
+                bombbs.getImage();
+                jlb.setIcon(bombbs);
             }
 
 
@@ -40,6 +43,7 @@ public class ball extends JLabel implements Runnable {
         System.out.println("爆炸動畫");
             //////////////////////////////////
             show = false;
+            bomb = false;
             i = 0;
             ball.this.setIcon(null);
         }

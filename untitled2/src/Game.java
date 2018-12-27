@@ -225,10 +225,11 @@ public class Game extends JFrame {
                         break;
 
                     case KeyEvent.VK_V :
-//                        ball = new Ball(jlbPlayer2.getX(),jlbPlayer2.getY());
-//                        jlbBall[x1][y1].add(ball);
-//                        Thread thread2 = new Thread(ball);
-//                        thread2.start();
+                        if(!jlbBall[x1][y1].getShow()) {
+                            jlbBall[x1][y1].setShow(true);
+                            Thread threads = new Thread(jlbBall[x1][y1]);
+                            threads.start();
+                        }
                         break;
                 }
             }
