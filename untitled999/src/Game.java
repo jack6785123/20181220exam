@@ -185,17 +185,50 @@ public class Game extends JFrame {
                         break;
 
                     case KeyEvent.VK_ENTER:
-//                        if(!jlbBall[x][y].getShow()) {
-//                            jlbBall[x][y].setShow(true);
-//                            Thread thread = new Thread(jlbBall[x][y]);
-//                            thread.start();
-//
-//
-//
-//
-//
-//                            System.out.println(loc[x][y]);
-//                        }
+                        ballChangeIcon(x, y);
+                        ballThread.add(new Ball1(jlbBall[x][y], Game.this, x, y));
+                        ballThread.get(ballThread.size() - 1).start();
+                        if (x > 0 && x < 10 && y > 0 && y < 6) {
+                            ballThread.add(new Ball1(jlbBall[x + 1][y], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x - 1][y], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x][y + 1], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x][y - 1], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                        }
+
+                        if (x == 0) {
+                            ballThread.add(new Ball1(jlbBall[x + 1][y], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x][y + 1], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x][y - 1], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                        } else if (x == 10) {
+                            ballThread.add(new Ball1(jlbBall[x - 1][y], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x][y + 1], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x][y - 1], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                        } else if (y == 0) {
+                            ballThread.add(new Ball1(jlbBall[x + 1][y], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x - 1][y], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x][y + 1], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                        } else if (y == 6) {
+                            ballThread.add(new Ball1(jlbBall[x + 1][y], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x - 1][y], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x][y - 1], Game.this, x, y));
+                            ballThread.get(ballThread.size() - 1).start();
+                        }
+
 
                         break;
 
@@ -236,51 +269,78 @@ public class Game extends JFrame {
 
                     case KeyEvent.VK_V:
                         ballChangeIcon(x1, y1);
-                        ballThread.add(new Ball1(jlbBall[x1][y1]));
-                        ballThread.get(ballThread.size() -1).start();
-                        ballThread.add(new Ball1(jlbBall[x1+1][y1]));
-                        ballThread.get(ballThread.size() -1).start();
-                        ballThread.add(new Ball1(jlbBall[x1-1][y1]));
-                        ballThread.get(ballThread.size() -1).start();
-                        ballThread.add(new Ball1(jlbBall[x1][y1+1]));
-                        ballThread.get(ballThread.size() -1).start();
-                        ballThread.add(new Ball1(jlbBall[x1][y1-1]));
-                        ballThread.get(ballThread.size() -1).start();
-//                        if(!jlbBall[x1][y1].getShow()) {
-//                            jlbBall[x1][y1].setShow(true);
-//                            Thread threads = new Thread(jlbBall[x1][y1]);
-//                            threads.start();
-//                        }
+                        ballThread.add(new Ball1(jlbBall[x1][y1], Game.this, x1, y1));
+                        ballThread.get(ballThread.size() - 1).start();
+                        if (x1 > 0 && x1 < 10 && y1 > 0 && y1 < 6) {
+                            ballThread.add(new Ball1(jlbBall[x1 + 1][y1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1 - 1][y1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1][y1 + 1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1][y1 - 1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                        }
 
+                        if (x1 == 0) {
+                            ballThread.add(new Ball1(jlbBall[x1 + 1][y1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1][y1 + 1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1][y1 - 1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+
+
+                        } else if (x1 == 10) {
+                            ballThread.add(new Ball1(jlbBall[x1 - 1][y1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1][y1 + 1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1][y1 - 1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                        } else if (y1 == 0) {
+                            ballThread.add(new Ball1(jlbBall[x1 + 1][y1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1 - 1][y1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1][y1 + 1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                        } else if (y1 == 6) {
+                            ballThread.add(new Ball1(jlbBall[x1 + 1][y1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1 - 1][y1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                            ballThread.add(new Ball1(jlbBall[x1][y1 - 1], Game.this, x1, y1));
+                            ballThread.get(ballThread.size() - 1).start();
+                        }
                         break;
                 }
             }
         });
-//       Thread thread2 =new Thread(new Runnable() {
-//           @Override
-//           public void run() {
-//               int x = 0;
-//               while(true){
-//                   for (int i = 0 ; i < 11 ; i ++){
-//                       for (int j = 0 ; j < 7 ; j++){
-//                           if (loc[i][j] == 3){
-//
-//                           }
-//                       }
-//                   }
-//                   try {
-//                       Thread.sleep(10);
-//                   } catch (InterruptedException e) {
-//                       e.printStackTrace();
-//                   }
-//               }
-//           }
-//       });
-//    thread2.start();
-//
     }
-        private void ballChangeIcon ( int x2, int y2){
-            jlbBall[x2][y2].setIcon(iconball);
-        }
 
+    private void ballChangeIcon(int x2, int y2) {
+        jlbBall[x2][y2].setIcon(iconball);
     }
+
+    public void check(int ballX , int ballY ) {
+        System.out.println(x +", " + y);
+        System.out.println("(" +ballX+", " +ballY+")");
+        if(ballX+1 == x  && ballY == y){
+            JOptionPane.showMessageDialog(Game.this,"輸嘞!");
+            System.exit(0);
+
+
+        }else if (ballX-1 == x && ballY == y){
+            System.out.println("player is dead >_<");
+        }else if (ballX == x && ballY+1  == y){
+            System.out.println("player is dead >_<");
+        }else if (ballX == x && ballY-1 == y){
+            System.out.println("player is dead >_<");
+        }else if (ballX+1 == x1 && ballY == y1){
+            System.out.println("player is dead >_<");
+        }else if (ballX-1 == x1 && ballY == y1){
+            System.out.println("player is dead >_<");
+        }
+    }
+}
